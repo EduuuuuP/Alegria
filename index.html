@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio</title>
+  <style>
+    /* Estilos gerais */
+    body {
+      background: linear-gradient(0deg, rgba(0,9,152,1) 0%, rgba(0,6,136,1) 33%, rgba(0,0,0,1) 100%);
+      font-family: 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 0;
+      color: white; /* Definindo a cor do texto como branco */
+      transition: color 0.3s ease-in-out; /* Adicionando uma transição suave de cor */
+    }
+
+    /* Estilos para a primeira tela */
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .main figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .main img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .main figcaption {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .main figure:hover {
+      transform: scale(1.1);
+    }
+    .baixo{
+        font-size: 20px;
+    }
+
+    /* Estilos para as telas subsequentes */
+    .content {
+      display: none;
+      height: 100vh;
+      text-align: justify;
+      margin-left: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out; /* Adicionando uma transição suave de opacidade */
+    }
+
+    .content.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .back-button {
+      margin-top: 20px;
+    }
+    .sub1{
+        margin-top: 20px;
+        max-width: 200px;
+        max-height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    h2{
+        color: brown;
+    }
+    .descricao{
+        font-size: 20px;
+    }
+    .cidade{
+        color: brown;
+    }
+
+a:link { color: rgb(255, 255, 255); }
+a:visited { color: rgb(255, 255, 255); }
+a:hover { color: rgb(255, 0, 0); }
+a:active { color: rgb(255, 238, 0); }
+
+  </style>
+</head>
+<body style="color: white;">
+  <!-- Primeira Tela -->
+  <div class="main">
+    <figure onclick="showContent('sobre-mim')">
+      <img src="eu.jpg" alt="Sobre Mim">
+      <figcaption class="baixo">Sobre Mim</figcaption>
+    </figure>
+    <figure onclick="showContent('formacao')">
+      <img src="formacao.jpg" alt="Formação">
+      <figcaption class="baixo">Formação</figcaption>
+    </figure>
+    <figure onclick="showContent('trabalhos')">
+      <img src="trabalhos.jpg" alt="Trabalhos">
+      <figcaption class="baixo">Trabalhos</figcaption>
+    </figure>
+  </div>
+
+  <!-- Telas Subsequentes -->
+  <div class="content" id="sobre-mim">
+    <img src="eu.jpg" alt="Sobre Mim" class="sub1">
+    <h2>Eduardo Romano Pietczak</h2>
+    <p class="descricao">-Meu nome é Eduardo, tenho 17 anos e estou no mercado de trabalho para trabalhar <br>
+    com a parte de programação de softwares.<br> <br>
+    -Estou disposto a trabalhar com as diversas linguas de programação pois quero adquirir <br>
+    conhecimento e estou disposto a trabalhar e a aprender oq for necessário<br>
+    </p><p class="cidade">NOVA RAMADA-RS</p>
+    <a href="https://api.whatsapp.com/send?phone=5555996153543&text=Oi!%20Vim%20atrav%C3%A9s%20de%20seu%20portf%C3%B3lio">+55 55 9 9615 3543</a><br>
+    <button class="back-button" onclick="goBack()">Voltar para a tela principal</button>
+  </div>
+
+  <div class="content" id="formacao">
+    <img src="eu.jpg" alt="Sobre Mim" class="sub1">
+    <h2>Formação</h2>
+    <p class="descricao">Fundamental: E.M.E.F. Dom Pedro I <br>
+    Ensino Médio: E.E.E.M. Dr. Roberto Löw <br>
+    Curso técnico: Sistema de Ensino Gaúcho (SEG) - Informática <br>
+    Cursos: ALURA - Front end (HTML, CSS), Data Science (MySQL)
+    </p>
+    <button class="back-button" onclick="goBack()">Voltar para a tela principal</button>
+  </div>
+
+  <div class="content" id="trabalhos">
+    <h2>Trabalhos</h2>
+    <p>Aqui você pode mostrar seus projetos anteriores e experiências profissionais.</p>
+    <button class="back-button" onclick="goBack()">Voltar para a tela principal</button>
+  </div>
+
+  <script>
+    function showContent(contentId) {
+      // Esconder a tela principal e alterar a cor do texto para branco
+      document.querySelector('.main').style.display = 'none';
+
+      // Mostrar a tela correspondente ao conteúdo selecionado e alterar a cor do texto para branco
+      document.getElementById(contentId).classList.add('active');
+    }
+
+    function goBack() {
+      // Mostrar a tela principal e alterar a cor do texto para preto
+      document.querySelector('.main').style.display = 'flex';
+
+      // Esconder as telas subsequentes
+      var contentElements = document.getElementsByClassName('content');
+      for (var i = 0; i < contentElements.length; i++) {
+        contentElements[i].classList.remove('active');
+      }
+    }
+  </script>
+</body>
+</html>
